@@ -1,0 +1,7 @@
+# Docker CLI will only look for .dockerignore file
+# in the root directory of the context,
+# if you have a monorepo of multiple packages,
+# make sure .dockerignore file is on the root directory of your context,
+# it will ignore it if it is somewhere in the subfolder.
+
+node_modules
