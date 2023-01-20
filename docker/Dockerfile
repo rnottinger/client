@@ -4,7 +4,7 @@
 # We need the node container so we can use node, angular cli
 # alias as node so in the next stage we can refer back to this stage
 FROM node:18.10.0-alpine3.16 as builder
-LABEL author="Richard Ottinger"
+LABEL author="Your Name"
 
 WORKDIR /usr/src/app
 
@@ -23,7 +23,7 @@ RUN npm run build
 # Stage 2:
 FROM nginx:stable-alpine
 
-LABEL maintainer="richard.ottinger@eastexcrude.com"
+LABEL maintainer="your-email@example.com"
 
 # setup a volume for some of the caching it does
 # optional but will control where the cache file in nginx get put
