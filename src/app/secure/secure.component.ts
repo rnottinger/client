@@ -44,8 +44,11 @@ export class SecureComponent implements OnInit {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
-    //
-    this.http.get<User>('http://localhost:8000/user', { headers: headers }).subscribe(
+    // local server
+    // this.http.get<User>('http://localhost:8000/user', { headers: headers }).subscribe(
+
+    // docker nginx server
+    this.http.get<User>('http://localhost:8088/user', { headers: headers }).subscribe(
         (result: User) => this.user = result,
         error => {
           localStorage.removeItem('token');
