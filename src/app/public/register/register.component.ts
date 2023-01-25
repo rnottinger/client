@@ -29,7 +29,11 @@ export class RegisterComponent implements OnInit {
     submit() {
         const formData = this.form.getRawValue()
         console.log(this.form.value);
-        this.http.post('http://localhost:8000/register', formData).subscribe(
+        // local server
+        // this.http.post('http://localhost:8000/register', formData).subscribe(
+
+        // docker nginx server
+        this.http.post('http://localhost:8088/register', formData).subscribe(
             result => console.log(result),
             error => console.log(error)
         );

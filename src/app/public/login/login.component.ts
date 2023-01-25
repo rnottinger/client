@@ -46,7 +46,11 @@ export class LoginComponent implements OnInit {
             scope: '*'
         };
         this.http.post(
-            'http://localhost:8000/oauth/token',
+            // local server
+            // 'http://localhost:8000/oauth/token',
+
+            // docker nginx server
+            'http://localhost:8088/oauth/token',
             data
         ).subscribe(
             (result: any) => {
