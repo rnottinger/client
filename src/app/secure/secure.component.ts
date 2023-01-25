@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 
 interface User {
@@ -35,7 +36,8 @@ export class SecureComponent implements OnInit {
 
 
   constructor(
-      private http: HttpClient
+      private http: HttpClient,
+      private router: Router // <-- so we can route the user to the login page
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,11 @@ export class SecureComponent implements OnInit {
     });
     //
     this.http.get<User>('http://localhost:8000/user', { headers: headers }).subscribe(
-        (result: User) => this.user = result
+        (result: User) => this.user = result,
+        error => {
+          localStorage.removeItem('token');
+          this.router.navigate(['/login'])
+        }
         // result => console.log(result)
     );
   }
