@@ -5,6 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SecureComponent } from './secure/secure.component';
 import { PublicModule } from "./public/public.module";
+import {AuthenticationModule} from "../../projects/authentication/src/lib/authentication.module";
+
+
+export const AUTHENTICATION_CONFIG = {
+  authEndpoint: "/users/authenticate",
+  initialPage: "home"
+};
 
 @NgModule({
   declarations: [
@@ -14,7 +21,8 @@ import { PublicModule } from "./public/public.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PublicModule
+    PublicModule,
+    AuthenticationModule.forRoot(AUTHENTICATION_CONFIG)
 
   ],
   providers: [],
