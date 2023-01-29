@@ -11,6 +11,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { SecureComponent } from './secure/secure.component';
 
 import { NotFoundComponent } from './not-found/not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 export const AUTHENTICATION_CONFIG = {
@@ -32,7 +33,8 @@ export const AUTHENTICATION_CONFIG = {
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AuthenticationModule.forRoot(AUTHENTICATION_CONFIG)
+    AuthenticationModule.forRoot(AUTHENTICATION_CONFIG),
+    BrowserAnimationsModule
 
   ],
   providers: [],

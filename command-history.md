@@ -200,3 +200,60 @@ CREATE projects/authentication/src/lib/components/logout/logout.component.ts (20
 UPDATE projects/authentication/src/lib/authentication.module.ts (1026 bytes)
 
 ```
+
+
+
+# Use Angular Material instead of Bootstrap
+
+
+- Uninstall the bootstrap npm package
+  - then remove the bootstrap styles from `angular.json`
+    - projects.clients.architect.build.options.styles="node_modules/bootstrap/scss/bootstrap.scss"
+     
+
+```shell
+
+npm uninstall bootstrap
+
+
+# remember to remove the bootstrap styles from angular.json
+
+
+ng add @angular/material
+
+
+
+
+git checkout -b install-material
+Switched to a new branch 'install-material'
+ richardottinger@Richards-MacBook-Pro  ~/Documents/projects/docker/demo-app/client   install-material ●  npm uninstall boostrap
+
+up to date, audited 911 packages in 2s
+
+90 packages are looking for funding
+  run `npm fund` for details
+
+1 high severity vulnerability
+
+To address all issues, run:
+  npm audit fix
+
+Run `npm audit` for details.
+ richardottinger@Richards-MacBook-Pro  ~/Documents/projects/docker/demo-app/client   install-material ●  ng add @angular/material
+ℹ Using package manager: npm
+✔ Found compatible package version: @angular/material@15.1.2.
+✔ Package information loaded.
+
+The package @angular/material@15.1.2 will be installed and executed.
+Would you like to proceed? Yes
+✔ Packages successfully installed.
+? Choose a prebuilt theme name, or "custom" for a custom theme: Indigo/Pink        [ Preview: https://material.angular.io?theme=indigo-pink ]
+? Set up global Angular Material typography styles? Yes
+? Include the Angular animations module? Include and enable animations
+UPDATE package.json (1159 bytes)
+✔ Packages installed successfully.
+UPDATE src/app/app.module.ts (1327 bytes)
+UPDATE angular.json (4132 bytes)
+UPDATE src/index.html (574 bytes)
+UPDATE src/styles.scss (181 bytes)
+```
