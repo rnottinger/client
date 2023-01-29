@@ -1,0 +1,6 @@
+<p>Welcome to the User Dashboard!</p>
+<p *ngIf="user">
+    Hi {{ user.first_name }} {{ user.last_name}}
+</p>
+<!--mat-raised-button color="primary"-->
+<button routerLink="/home" routerLinkActive="active">Go Home</button>
