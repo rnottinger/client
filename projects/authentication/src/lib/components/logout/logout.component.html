@@ -1,0 +1,9 @@
+<ng-container>
+    <!--   -->
+    <!--    <button mat-icon-button (click)="logout()">Logout</button>-->
+    <!--    <a class="nav-link" routerLink="/login" *ngIf="!loggedIn">Login</a>-->
+
+    <a class="nav-link" routerLink="login" *ngIf="!isLoggedIn()">Login</a>
+    <a class="nav-link" (click)="logout()" *ngIf="isLoggedIn()">Logout</a>
+    <a class="nav-link" routerLink="register" *ngIf="!isLoggedIn()">Register</a>
+</ng-container>
