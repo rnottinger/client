@@ -257,3 +257,30 @@ UPDATE angular.json (4132 bytes)
 UPDATE src/index.html (574 bytes)
 UPDATE src/styles.scss (181 bytes)
 ```
+
+
+- `index.html`
+  - the angular material icons are added to the head
+    - to view the available icons, 
+      - go to https://fonts.google.com/icons?selected=Material+Icons
+    - `to use` an icon, 
+      - `add the icon name` 
+        - to the mat-icon element
+          - `<mat-icon>home</mat-icon>`
+  - & the `Roboto` font is added to the head
+- If you want to use
+  - a new material component
+    - then you need to find
+      - the corresponding component
+        - in the `material.angular.io` website
+          - https://material.angular.io/components/categories
+            - Select the component > Slider
+              - on the left Side Bar
+            - Then click the `API` tab
+              - you will now see the import
+                - for the module 
+                  - that you need to add 
+                    - to the `imports` array 
+                      - in the `app.module.ts` file
+            - `API reference for Angular Material slider`
+              - `import {MatSliderModule} from '@angular/material/slider';`

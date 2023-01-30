@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {AuthenticationService} from "../../../authentication.service";
 
 @Component({
   selector: 'lib-register',
@@ -15,7 +16,8 @@ export class RegisterComponent implements OnInit {
   constructor(
       private formBuilder: FormBuilder,
       private http: HttpClient,
-      private router: Router
+      private router: Router,
+      private authService: AuthenticationService,
 
   ) { }
   ngOnInit(): void {
@@ -31,17 +33,27 @@ export class RegisterComponent implements OnInit {
   submit() {
     const formData = this.form.getRawValue()
     console.log(this.form.value);
-    // local server
-    // this.http.post('http://localhost:8000/register', formData).subscribe(
 
-        // docker nginx server
-    this.http.post('http://localhost:8088/register', formData).subscribe(
-        result => {
-          console.log(result);
-          alert('Registration successful. Please login.');
-          this.router.navigate(['/login']);
-        },
-        error => console.log(error)
-    );
+
+    this.authService.register(formData)
+        .subscribe(
+            result => {
+              console.log(result);
+              alert('Registration successful. Please login.');
+              this.router.navigate(['/login']);
+            },
+            error => console.log(error)
+        )
+
+
+        // data => {
+        //   this.router.navigate([this.config.initialPage]);
+        // },
+        // error => {
+        //   this.error = error;
+        // });
+
+
+
   }
 }
