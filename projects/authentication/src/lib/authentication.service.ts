@@ -5,49 +5,39 @@ import {Observable} from "rxjs";
 import {LibraryConfig} from "./models/config";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
+import {ConfigService} from "../../../../src/app/config.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+
+
   constructor(
+
+      // Inject the configuration which is set in app.module.ts
+      @Inject('config') private authSettings: LibraryConfig,
       private http: HttpClient,
       private router: Router,
-      // Inject the configuration which is set in app.module.ts
-      @Inject('config') private config: LibraryConfig
+      private configService: ConfigService
   ) {}
 
   login(user: any): Observable<any> {
-    // console.log('Login: ' + user.email + ' ' + user.password);
-    // console.log(this.config);
-
-
     const data = {
-      // username: formData.email,
-      // password: formData.password,
       username: user.email,
       password: user.password,
       grant_type: 'password',
-      client_id: 2,
-
-      // hardcoding for now..this value will eventually come from an environment file
-      // see Laravel --> .env --> CLIENT_2
-      // or .env_example on how to generate this value
-      // client_secret: '<client_secret_2>',
-
-
+      client_id: this.configService.config.client_id,
+      client_secret: this.configService.config.client_secret,
       scope: '*'
     };
 
-    // console.log('Data: ' + JSON.stringify(data));
-
-    return this.http.post<any>(this.config.authEndpoint, data)
+    const apiUrl = this.configService.config.apiUrl + this.authSettings.authEndpoint;
+    return this.http.post<any>(apiUrl, data)
         .pipe(
             // debug( RxJsLoggingLevel.INFO, "user-begin: "),
             tap((result) => {
-              // console.log('User stored: ' + JSON.stringify(user));
               localStorage.setItem("token", JSON.stringify(result.access_token));
-              // return user;
             }),
             // debug( RxJsLoggingLevel.INFO, "user-end: ")
         );
@@ -61,19 +51,22 @@ export class AuthenticationService {
 
   getLoggedUser(): any {
 
-    const t1 = localStorage.getItem("token");
-    if (t1) {
-      const test: any = JSON.parse(t1);
-      // console.log('Token: ' + JSON.stringify(test));
-      return test;
+    const token = localStorage.getItem("token");
+    if (token) {
+      return JSON.parse(token);
+      // const test: any = JSON.parse(t1);
+      // // console.log('Token: ' + JSON.stringify(test));
+      // return test;
     }
     return null;
 
-
-    // console.log(JSON.parse("loggedInUser"));
   }
 
   isUserAuthenticated(): boolean {
     return !!localStorage.getItem("token");
+  }
+
+  register(user: any): Observable<any> {
+    return this.http.post(this.configService.config.apiUrl + '/register', user);
   }
 }

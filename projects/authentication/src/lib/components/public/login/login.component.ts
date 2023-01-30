@@ -33,9 +33,10 @@ export class LoginComponent {
       return;
     }
     const user = this.loginForm.value;
-    this.authService.login(user).subscribe(
-        data => {
-          this.router.navigate([this.config.initialPage]);
+    this.authService.login(user)
+        .subscribe(
+            data => {
+            this.router.navigate([this.config.initialPage]);
         },
         error => {
           this.error = error;
