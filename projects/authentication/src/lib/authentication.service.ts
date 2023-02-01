@@ -22,6 +22,11 @@ export class AuthenticationService {
       private configService: ConfigService
   ) {}
 
+  signIn() {
+    console.log('Sign in clicked');
+    this.router.navigate(["/login"]);
+  }
+
   login(user: any): Observable<any> {
     const data = {
       username: user.email,
