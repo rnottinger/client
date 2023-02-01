@@ -1,7 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Version, VERSION} from '@angular/core';
+import {Title} from "@angular/platform-browser";
+
 import {User} from "../../../projects/authentication/src/lib/models/user.model";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Router} from "@angular/router";
+import {LoggerService} from "../core/services/logger.service";
+import {DataService} from "../core/services/data.service";
+import {Book} from "../shared/models/book";
+import {Reader} from "../shared/models/reader";
+import {catchError} from "rxjs";
+import {NotificationService} from "../core/services/notification.service";
 
 @Component({
   selector: 'app-user-dashboard',
@@ -22,18 +30,53 @@ export class UserDashboardComponent implements OnInit {
   };
 
 
+  allBooks: Book[] | undefined;
+  allReaders: Reader[] | undefined;
+  mostPopularBook: Book | undefined;
+
+
+
 
   constructor(
       private http: HttpClient,
-      private router: Router // <-- so we can route the user to the login page
-  ) { }
+      private router: Router, // <-- so we can route the user to the login page
+      private loggerService: LoggerService,
+      private dataService: DataService,
+      private title: Title,
+      private notificationService: NotificationService
+
+  ) {
+    // this.loggerService.log('Creating the UserDashboardComponent');
+    // this.loggerService.trace('stack trace');
+
+    // throw new Error('Ugly Technical Error');
+  }
 
   ngOnInit(): void {
+    // Best practice: Initialize the data for a component in the ngOnInit lifecycle hook
+    // use a service to get data from the server
+    this.allBooks = this.dataService.getAllBooks();
+    this.allReaders = this.dataService.getAllReaders();
+    this.mostPopularBook = this.dataService.mostPopularBook;
+
+    /**
+     * 1. Import the DataService into the UserDashboardComponent
+     * 2. Inject the DataService into the constructor
+     * 3. Call the DataService methods to get the data that was assigned to properties on the component
+     */
+
+
+    this.title.setTitle(`User Dashboard - ${VERSION.full}`);
+
+    // this.notificationService.showSuccess('Welcome to the User dashboard', 'X');
+    this.notificationService.showError('Error');
+
+
     // local server
-    // this.http.get<User>('http://localhost:8000/user')
+    this.http.get<User>('http://localhost:8000/user')
 
         // docker nginx server)
-    this.http.get<User>('http://localhost:8088/user')
+    // this.http.get<User>('http://localhost:8088/user')
         .subscribe(
         (result: User) => this.user = result,
         error => {

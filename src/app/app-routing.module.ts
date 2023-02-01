@@ -36,6 +36,9 @@ const routes: Routes = [
   // Secure routes else redirect to /login
   {path: 'admin', component: AdminDashboardComponent, canActivate: [AuthenticationGuard, RoleGuard], data: {expectedRole: ROLE.ADMIN}},
   {path: 'user', component: UserDashboardComponent, canActivate: [AuthenticationGuard, RoleGuard], data: {expectedRole: ROLE.USER}},
+
+  // the editreader route takes a :id parameter so that the related component can load the correct reader
+  // {path: 'editReader/:id', component: EditReaderComponent, canActivate: [AuthenticationGuard, RoleGuard], data: {expectedRole: ROLE.ADMIN}},
   {path: '**', component: NotFoundComponent}
 ];
 
