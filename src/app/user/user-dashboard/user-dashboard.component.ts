@@ -1,18 +1,17 @@
 import {Component, OnInit, Version, VERSION} from '@angular/core';
 import {Title} from "@angular/platform-browser";
 
-import {User} from "../../../projects/authentication/src/lib/models/user.model";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {User} from "../../../../projects/authentication/src/lib/models/user.model";
+import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {LoggerService} from "../core/services/logger.service";
-import {DataService} from "../core/services/data.service";
-import {Book} from "../shared/models/book";
-import {Reader} from "../shared/models/reader";
-import {catchError} from "rxjs";
-import {NotificationService} from "../core/services/notification.service";
+import {LoggerService} from "../../core/services/logger.service";
+import {DataService} from "../../core/services/data.service";
+import {IBook} from "../../shared/models/book";
+import {IReader} from "../../shared/models/reader";
+import {NotificationService} from "../../core/services/notification.service";
 
 @Component({
-  selector: 'app-user-dashboard',
+  selector: 'abc-user-dashboard',
   templateUrl: './user-dashboard.component.html',
   styleUrls: ['./user-dashboard.component.scss']
 })
@@ -30,9 +29,9 @@ export class UserDashboardComponent implements OnInit {
   };
 
 
-  allBooks: Book[] | undefined;
-  allReaders: Reader[] | undefined;
-  mostPopularBook: Book | undefined;
+  allBooks: IBook[] | undefined;
+  allReaders: IReader[] | undefined;
+  mostPopularBook: IBook | undefined;
 
 
 

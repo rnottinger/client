@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { allBooks, allReaders } from "../../data";
-import { Book } from "../../shared/models/book";
-import { Reader } from "../../shared/models/reader";
+import { allBooks, allReaders } from "../../shared/data";
+import { IBook } from "../../shared/models/book";
+import { IReader} from "../../shared/models/reader";
 import { LoggerService } from "./logger.service";
 
 
@@ -23,32 +23,34 @@ import { LoggerService } from "./logger.service";
 })
 export class DataService {
 
-    mostPopularBook: Book = allBooks[0];
+    mostPopularBook: IBook = allBooks[0];
 
     constructor(
         private loggerService: LoggerService
     ) { }
 
-    setMostPopularBook(popularBook: Book): void {
+    setMostPopularBook(popularBook: IBook): void {
       this.mostPopularBook = popularBook;
     }
-    getAllReaders(): Reader[] {
+
+    getAllReaders(): IReader[] {
       return allReaders;
     }
 
-    getReaderById(id: number): Reader {
+    // getReaderById(id: number): IReader {
+    //
+    //   return allReaders.find(
+    //       (reader) => reader.readerID === id
+    //   )
+    //   // ) as IReader
+    //
+    // }
 
-      return allReaders.find(
-          (reader) => reader.readerID === id
-      ) as Reader
-
-    }
-
-    getAllBooks(): Book[] {
+    getAllBooks(): IBook[] {
       return allBooks;
     }
 
-    getBookById(id: number): Book {
-      return allBooks.find(book => book.bookID === id) as Book;
-    }
+    // getBookById(id: number): IBook {
+    //   return allBooks.find(book => book.bookID === id);
+    // }
 }

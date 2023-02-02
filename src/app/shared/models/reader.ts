@@ -1,6 +1,6 @@
-export class Reader {
-    readerID: number = 0;
-    name: string = '';
-    weeklyReadingGoal: number = 0;
-    totalMinutesRead: number = 0;
+export interface IReader {
+    readerID: number;
+    name: string;
+    weeklyReadingGoal: number;
+    totalMinutesRead: number;
 }

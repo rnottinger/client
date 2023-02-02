@@ -5,14 +5,7 @@
     <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
     <button mat-button routerLink="/register" routerLinkActive="active">Register</button>
     <button mat-button routerLink="/dashboard" routerLinkActive="active">Dashboard</button>
-    <button mat-button routerLink="/logout" routerLinkActive="active">Logout</button>
+
+    <lib-logout></lib-logout>
+<!--    <button mat-button routerLink="/logout" routerLinkActive="active">Logout</button>-->
 </mat-toolbar>
-
-<app-busy></app-busy>
-
-<p>Welcome to the User Dashboard!</p>
-<p *ngIf="user">
-    Hi {{ user.first_name }} {{ user.last_name}}
-</p>
-<!--mat-raised-button color="primary"-->
-<button routerLink="/home" routerLinkActive="active">Go Home</button>

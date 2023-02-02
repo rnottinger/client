@@ -1,25 +1,23 @@
 import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
+import { ConfigService } from "./core/services/config.service";
 
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { SecureComponent } from './secure/secure.component';
-
-import { NotFoundComponent } from './not-found/not-found.component';
-
+import { httpInterceptorProviders } from "./core/services/interceptors";
+import { CoreModule} from "./core/core.module";
 import { SharedModule } from "./shared/shared.module";
+import { OrderModule } from "./order/order.module";
+import { AdminModule } from "./admin/admin.module";
+import { UserModule } from "./user/user.module";
 
-import {ConfigService} from "./config.service";
-import {LoggerService} from "./core/services/logger.service";
-import {PlainLoggerService} from "./core/services/plain-logger.service";
-import {DataService} from "./core/services/data.service";
-import {dataServiceFactory} from "./core/services/data.service.factory";
-import {CentralizedErrorHandlerService} from "./core/services/centralized-error-handler.service";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {httpInterceptorProviders} from "./core/services/interceptors";
-
+// import {LoggerService} from "./core/services/logger.service";
+// import {PlainLoggerService} from "./core/services/plain-logger.service";
+// import {DataService} from "./core/services/data.service";
+// import {dataServiceFactory} from "./core/services/data.service.factory";
+// import {CentralizedErrorHandlerService} from "./core/services/centralized-error-handler.service";
 
 export const configFactory = (configService: ConfigService) => {
     return () => configService.loadConfig();
@@ -28,15 +26,16 @@ export const configFactory = (configService: ConfigService) => {
 @NgModule({
     declarations: [
         AppComponent,
-        SecureComponent,
-        AdminDashboardComponent,
-        UserDashboardComponent,
-        NotFoundComponent,
+        NotFoundComponent
     ],
     imports: [
         BrowserModule,
         HttpClientModule,
-        SharedModule, // imports the modules that are shared across the entire application which avoids circular dependency issues
+        CoreModule,
+        SharedModule, // eventually we will import this in feature modules instead of here
+        OrderModule,
+        AdminModule,
+        UserModule
     ],
     providers: [
         httpInterceptorProviders,
