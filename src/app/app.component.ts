@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ConfigService} from "./config.service";
+import {ConfigService} from "./core/services/config.service";
 
 @Component({
   selector: 'app-root',
@@ -8,22 +8,24 @@ import {ConfigService} from "./config.service";
 })
 export class AppComponent implements OnInit {
 
+    title = 'client';
   constructor(
       private configService: ConfigService
   ) {
-    console.log('this is my setting: ' + JSON.stringify(this.configService.config));
+    // console.log('this is my setting: ' + JSON.stringify(this.configService.config));
   }
-  loggedIn = false;
+  // loggedIn = false;
+
   ngOnInit(): void {
     /**
      * this means we are logged in
      *   if we have a token in localStorage
      */
-    this.loggedIn = localStorage.getItem('token') !== null
+    // this.loggedIn = localStorage.getItem('token') !== null
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    // this.loggedIn = false;
-  }
+  // logout() {
+  //   localStorage.removeItem('token');
+  //   // this.loggedIn = false;
+  // }
 }

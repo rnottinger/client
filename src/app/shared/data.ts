@@ -1,5 +1,5 @@
-import {Reader} from "./shared/models/reader";
-import {Book} from "./shared/models/book";
+import {IReader} from "./models/reader";
+import {IBook} from "./models/book";
 
 /**
  * This file contains some hard-coded data for the app
@@ -7,14 +7,14 @@ import {Book} from "./shared/models/book";
  *     until we get the app
  *       wired up to the api.
  */
-export const allReaders: Reader[] = [
+export const allReaders: IReader[] = [
     { readerID: 1, name: 'Marie', weeklyReadingGoal: 400, totalMinutesRead: 5600 },
     { readerID: 2, name: 'Daniel', weeklyReadingGoal: 210, totalMinutesRead: 3000 },
     { readerID: 3, name: 'Lanier', weeklyReadingGoal: 140, totalMinutesRead: 600 },
     { readerID: 4, name: 'Tessa', weeklyReadingGoal: 140, totalMinutesRead: 600 },
 ];
 
-export const allBooks: Book[] = [
+export const allBooks: IBook[] = [
     { bookID: 1, title: 'Goodnight Moon', author: 'Margaret Wise Brown', publicationYear: 1953 },
     { bookID: 2, title: 'Winnie-the-Pooh', author: 'A. A. Milne', publicationYear: 1926 },
     { bookID: 3, title: 'Where the Wild Things Are', author: 'Maurice Sendak', publicationYear: 1963 },

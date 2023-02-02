@@ -5,7 +5,7 @@ import {Observable} from "rxjs";
 import {LibraryConfig} from "./models/config";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
-import {ConfigService} from "../../../../src/app/config.service";
+import {ConfigService} from "../../../../src/app/core/services/config.service";
 
 @Injectable({
   providedIn: 'root'

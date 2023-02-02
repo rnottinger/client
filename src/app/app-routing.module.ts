@@ -7,7 +7,7 @@ import { AuthenticationGuard } from "../../projects/authentication/src/lib/guard
 import { RoleGuard } from "../../projects/authentication/src/lib/guards/role.guard";
 
 // If the user requests a route that is not found
-import { NotFoundComponent } from "./not-found/not-found.component";
+import { NotFoundComponent } from "./shared/not-found/not-found.component";
 
 // Import the public components from the authentication library
 import { PublicComponent } from "../../projects/authentication/src/lib/components/public/public.component";
@@ -16,10 +16,10 @@ import { LoginComponent } from "../../projects/authentication/src/lib/components
 import { RegisterComponent } from "../../projects/authentication/src/lib/components/public/register/register.component";
 
 // Import the secure components
-import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
-import { UserDashboardComponent } from "./user-dashboard/user-dashboard.component";
+import { AdminDashboardComponent } from "./admin/admin-dashboard/admin-dashboard.component";
+import { UserDashboardComponent } from "./user/user-dashboard/user-dashboard.component";
 
-import { ROLE } from './role.enum';
+import { ROLE } from './shared/role.enum';
 
 const routes: Routes = [
   {
