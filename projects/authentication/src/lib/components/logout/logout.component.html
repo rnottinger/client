@@ -1,9 +1,5 @@
 <ng-container>
-    <!--   -->
-    <!--    <button mat-icon-button (click)="logout()">Logout</button>-->
-    <!--    <a class="nav-link" routerLink="/login" *ngIf="!loggedIn">Login</a>-->
-
-    <a class="nav-link" routerLink="login" *ngIf="!isLoggedIn()">Login</a>
-    <a class="nav-link" (click)="logout()" *ngIf="isLoggedIn()">Logout</a>
-    <a class="nav-link" routerLink="register" *ngIf="!isLoggedIn()">Register</a>
+    <button mat-button routerLink="/login" routerLinkActive="active" *ngIf="!isLoggedIn()">Login</button>
+    <button mat-button (click)="logout()" routerLinkActive="active" *ngIf="isLoggedIn()">Logout</button>
+    <button mat-button routerLink="/register" routerLinkActive="active" *ngIf="!isLoggedIn()">Register</button>
 </ng-container>

@@ -32,6 +32,7 @@ export const configFactory = (configService: ConfigService) => {
         BrowserModule,
         AppRoutingModule,
         AuthenticationModule.forRoot(AUTHENTICATION_CONFIG),
+
         HttpClientModule,
         CoreModule,
         SharedModule, // eventually we will import this in feature modules instead of here

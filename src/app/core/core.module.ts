@@ -7,6 +7,12 @@ import { MatButtonModule } from "@angular/material/button";
 import { RouterModule } from "@angular/router";
 import { AuthenticationModule } from "../../../projects/authentication/src/lib/authentication.module";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { LayoutModule } from "@angular/cdk/layout";
+import { LayoutComponent } from './layout/layout.component';
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
 
 
 /**
@@ -19,7 +25,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 @NgModule({
   declarations: [
     NavBarComponent,
-    AccountMenuComponent
+    AccountMenuComponent,
+    LayoutComponent
   ],
   imports: [
     CommonModule,
@@ -27,8 +34,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     AuthenticationModule,
 
     BrowserAnimationsModule,
+    LayoutModule,
     MatToolbarModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   /**
    * since these components
@@ -39,7 +51,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
   exports: [
     BrowserAnimationsModule,
     NavBarComponent,
-    AccountMenuComponent
+    AccountMenuComponent,
+    LayoutComponent
   ],
   providers: []
 })
