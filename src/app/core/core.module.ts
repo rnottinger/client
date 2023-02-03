@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AccountMenuComponent } from './account-menu/account-menu.component';
-import {NavBarComponent} from "./nav-bar/nav-bar.component";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatButtonModule} from "@angular/material/button";
-import {RouterModule} from "@angular/router";
-import {AuthenticationModule} from "../../../projects/authentication/src/lib/authentication.module";
+import { NavBarComponent } from "./nav-bar/nav-bar.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatButtonModule } from "@angular/material/button";
+import { RouterModule } from "@angular/router";
+import { AuthenticationModule } from "../../../projects/authentication/src/lib/authentication.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
 /**
@@ -24,6 +25,8 @@ import {AuthenticationModule} from "../../../projects/authentication/src/lib/aut
     CommonModule,
     RouterModule,
     AuthenticationModule,
+
+    BrowserAnimationsModule,
     MatToolbarModule,
     MatButtonModule
   ],
@@ -34,8 +37,10 @@ import {AuthenticationModule} from "../../../projects/authentication/src/lib/aut
    *       we need to export them
    */
   exports: [
+    BrowserAnimationsModule,
     NavBarComponent,
-    AccountMenuComponent],
+    AccountMenuComponent
+  ],
   providers: []
 })
 export class CoreModule { }

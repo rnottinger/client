@@ -7,11 +7,11 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { ConfigService } from "./core/services/config.service";
 
 import { httpInterceptorProviders } from "./core/services/interceptors";
-import { CoreModule} from "./core/core.module";
-import { SharedModule } from "./shared/shared.module";
-import { OrderModule } from "./order/order.module";
-import { AdminModule } from "./admin/admin.module";
-import { UserModule } from "./user/user.module";
+import { CoreModule } from "./core/core.module";
+import { AUTHENTICATION_CONFIG, SharedModule } from "./shared/shared.module";
+
+import { AuthenticationModule } from "../../projects/authentication/src/lib/authentication.module";
+import { AppRoutingModule } from "./app-routing.module";
 
 // import {LoggerService} from "./core/services/logger.service";
 // import {PlainLoggerService} from "./core/services/plain-logger.service";
@@ -30,12 +30,15 @@ export const configFactory = (configService: ConfigService) => {
     ],
     imports: [
         BrowserModule,
+        AppRoutingModule,
+        AuthenticationModule.forRoot(AUTHENTICATION_CONFIG),
         HttpClientModule,
         CoreModule,
         SharedModule, // eventually we will import this in feature modules instead of here
-        OrderModule,
-        AdminModule,
-        UserModule
+    ],
+    exports: [
+        AppRoutingModule,
+        AuthenticationModule,
     ],
     providers: [
         httpInterceptorProviders,

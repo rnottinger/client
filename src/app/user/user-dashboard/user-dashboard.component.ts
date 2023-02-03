@@ -1,14 +1,15 @@
-import {Component, OnInit, Version, VERSION} from '@angular/core';
-import {Title} from "@angular/platform-browser";
+import { Component, OnInit, Version, VERSION } from '@angular/core';
+import { Title } from "@angular/platform-browser";
+import { HttpClient } from "@angular/common/http";
 
-import {User} from "../../../../projects/authentication/src/lib/models/user.model";
-import {HttpClient} from "@angular/common/http";
-import {Router} from "@angular/router";
-import {LoggerService} from "../../core/services/logger.service";
-import {DataService} from "../../core/services/data.service";
-import {IBook} from "../../shared/models/book";
-import {IReader} from "../../shared/models/reader";
-import {NotificationService} from "../../core/services/notification.service";
+import { User } from "../../../../projects/authentication/src/lib/models/user.model";
+import { Router } from "@angular/router";
+import { LoggerService } from "../../core/services/logger.service";
+import { DataService } from "../../core/services/data.service";
+import { NotificationService } from "../../core/services/notification.service";
+
+import { IBook } from "../../shared/models/book";
+import { IReader } from "../../shared/models/reader";
 
 @Component({
   selector: 'abc-user-dashboard',

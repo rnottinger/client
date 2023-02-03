@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppRoutingModule } from "../app-routing.module";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatSliderModule } from "@angular/material/slider";
-import { AuthenticationModule } from "../../../projects/authentication/src/lib/authentication.module";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { BusyComponent } from './busy/busy.component';
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {MatButtonModule} from "@angular/material/button";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatButtonModule } from "@angular/material/button";
 
 export const AUTHENTICATION_CONFIG = {
     authEndpoint: '/oauth/token',
@@ -19,11 +16,11 @@ export const AUTHENTICATION_CONFIG = {
  * This SharedModule is used
  *   to share
  *     components, directives, pipes, and other code
- *       that will be shared across multiple modules
+ *       that will be shared across feature modules
  *         in the application
  *
  * We will have multiple feature modules
- *   both will need the spinner
+ *   that will need the spinner
  *
  * This module
  *   will be imported
@@ -43,13 +40,9 @@ export const AUTHENTICATION_CONFIG = {
     BusyComponent
   ],
   imports: [
-
       CommonModule,
-      AuthenticationModule.forRoot(AUTHENTICATION_CONFIG),
-      AppRoutingModule,
 
-
-      BrowserAnimationsModule,
+      // Material
       MatSliderModule,
       MatSnackBarModule,
       MatToolbarModule,
@@ -58,12 +51,10 @@ export const AUTHENTICATION_CONFIG = {
 
   ],
     exports: [
-        AuthenticationModule,
-        BusyComponent,
         CommonModule,
+        BusyComponent,
 
-        AppRoutingModule,
-        BrowserAnimationsModule,
+        // Material
         MatSliderModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
