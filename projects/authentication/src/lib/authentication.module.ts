@@ -12,10 +12,11 @@ import { LoginComponent } from './components/public/login/login.component';
 import { HomeComponent } from './components/public/home/home.component';
 import { LogoutComponent } from './components/logout/logout.component';
 
-import {TokenInterceptor} from "./interceptors/token.interceptor";
-import {ErrorInterceptor} from "./interceptors/error.interceptor";
+import { TokenInterceptor } from "./interceptors/token.interceptor";
+import { ErrorInterceptor } from "./interceptors/error.interceptor";
 
 import { LibraryConfig } from "./models/config";
+import { MatButtonModule } from "@angular/material/button";
 
 
 @NgModule({
@@ -27,12 +28,13 @@ import { LibraryConfig } from "./models/config";
     RegisterComponent,
     HomeComponent,
   ],
-  imports: [
-      CommonModule,
-      RouterModule,
-      ReactiveFormsModule,
-      HttpClientModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatButtonModule
+    ],
   exports: [
     AuthenticationComponent,
     LogoutComponent
