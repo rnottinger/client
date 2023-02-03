@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from "@angular/router";
+import { ReactiveFormsModule } from "@angular/forms";
+
 import { SharedModule } from "../shared/shared.module";
+
 import { AdminComponent } from "./admin.component";
 import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.component";
+import { AdminRoutingModule } from "./admin-routing.module";
 
 
 
@@ -12,8 +15,9 @@ import { AdminDashboardComponent } from "./admin-dashboard/admin-dashboard.compo
       AdminDashboardComponent
   ],
   imports: [
-    RouterModule,
+    ReactiveFormsModule,
     SharedModule,
+    AdminRoutingModule
   ]
 })
 export class AdminModule { }

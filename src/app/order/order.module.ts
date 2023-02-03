@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 
 import { OrderComponent } from "./order.component";
-import {RouterModule} from "@angular/router";
-import {SharedModule} from "../shared/shared.module";
+import { SharedModule } from "../shared/shared.module";
+import { ReactiveFormsModule } from "@angular/forms";
+import { OrderRoutingModule } from "./order-routing.module";
 
 
 /**
@@ -13,8 +14,9 @@ import {SharedModule} from "../shared/shared.module";
       OrderComponent
   ],
   imports: [
-      RouterModule,
-      SharedModule // since we are importing the SharedModule, we don't need to import CommonModule
+      ReactiveFormsModule,
+      SharedModule,
+      OrderRoutingModule
   ],
   exports: [],
   providers: []

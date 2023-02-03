@@ -40,11 +40,11 @@ export class LoggingHttpInterceptor implements HttpInterceptor {
   }
 
   logRequest(request: HttpRequest<unknown>) {
-    console.log('Request: ' + request.url);
+    console.log('Request: ' + JSON.stringify(request.url));
   }
 
   logResponse(response: HttpEvent<unknown>) {
-    console.log('Response: ' + response);
+    console.log('Response: ' + JSON.stringify(response));
   }
 
   logError(error: HttpEvent<unknown>) {

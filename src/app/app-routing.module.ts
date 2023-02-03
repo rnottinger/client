@@ -15,9 +15,7 @@ import { HomeComponent } from "../../projects/authentication/src/lib/components/
 import { LoginComponent } from "../../projects/authentication/src/lib/components/public/login/login.component";
 import { RegisterComponent } from "../../projects/authentication/src/lib/components/public/register/register.component";
 
-// Import the secure components
-import { AdminDashboardComponent } from "./admin/admin-dashboard/admin-dashboard.component";
-import { UserDashboardComponent } from "./user/user-dashboard/user-dashboard.component";
+// We are now using dynamic imports in routes for lazy loaded feature modules
 
 import { ROLE } from './shared/role.enum';
 
@@ -33,11 +31,21 @@ const routes: Routes = [
       {path: '',   redirectTo: 'home', pathMatch: 'full'}, // redirect to `first-component`
     ]
   },
-  // Secure routes else redirect to /login
-  {path: 'admin', component: AdminDashboardComponent, canActivate: [AuthenticationGuard, RoleGuard], data: {expectedRole: ROLE.ADMIN}},
-  {path: 'user', component: UserDashboardComponent, canActivate: [AuthenticationGuard, RoleGuard], data: {expectedRole: ROLE.USER}},
+  // Lazy Load these secure routes else redirect to /login
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: {expectedRole: ROLE.ADMIN}
+  },
+  {
+    path: 'user',
+    loadChildren: () => import('./user/user.module').then(m => m.UserModule),
+    canActivate: [AuthenticationGuard, RoleGuard],
+    data: {expectedRole: ROLE.USER}
+  },
 
-  // the editreader route takes a :id parameter so that the related component can load the correct reader
+  // EXAMPLE: the editreader route takes a :id parameter so that the related component can load the correct reader
   // {path: 'editReader/:id', component: EditReaderComponent, canActivate: [AuthenticationGuard, RoleGuard], data: {expectedRole: ROLE.ADMIN}},
   {path: '**', component: NotFoundComponent}
 ];
