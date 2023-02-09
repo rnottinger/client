@@ -1,8 +1,8 @@
-import {Provider} from "@angular/core";
-import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {LoggingHttpInterceptor} from "./logging-http.interceptor";
-import {ReadOnlyHttpInterceptor} from "./read-only-http.interceptor";
-import {BusyHttpInterceptor} from "./busy-http.interceptor";
+import { Provider } from "@angular/core";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { LoggingHttpInterceptor } from "./logging-http.interceptor";
+import { ReadOnlyHttpInterceptor } from "./read-only-http.interceptor";
+import { BusyHttpInterceptor } from "./busy-http.interceptor";
 
 /**
  * HTTP_INTERCEPTORS is an Injector Symbol/Token
