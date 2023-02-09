@@ -1,11 +1,12 @@
-import {Inject, Injectable} from '@angular/core';
-import {debug, RxJsLoggingLevel} from "./common/debug";
-import {tap} from "rxjs/operators";
-import {Observable} from "rxjs";
-import {LibraryConfig} from "./models/config";
-import {Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import {ConfigService} from "../../../../src/app/core/services/config.service";
+import { Inject, Injectable } from '@angular/core';
+import { Observable } from "rxjs";
+import { tap } from "rxjs/operators";
+import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+
+import { ConfigService } from "./config.service";
+import { LibraryConfig } from "./models/config";
+// import {debug, RxJsLoggingLevel} from "./common/debug";
 
 @Injectable({
   providedIn: 'root'

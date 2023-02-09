@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from "./core/services/config.service";
+import { ConfigService } from "../../projects/authentication/src/lib/config.service";
+
 
 @Component({
   selector: 'app-root',

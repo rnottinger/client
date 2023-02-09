@@ -15,4 +15,16 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class OrderRoutingModule { }
+export class OrderRoutingModule {
+  /**
+   * Instead of importing components here
+   * and then importing components again in the OrderModule,
+   *   since we have imported different components for different routes
+   *     we can add a static property to the OrderRoutingModule
+   *       and then in the feature order module,
+   *         we can import the components from the routing module
+   */
+  static components = [
+      OrderComponent
+  ];
+}
