@@ -5,9 +5,9 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
-import {LoggerService} from "../logger.service";
-import {SessionService} from "../session.service";
+import { Observable, throwError } from 'rxjs';
+import { LoggerService } from "../services/logger.service";
+import { SessionService } from "../services/session.service";
 
 /**
  * This interceptor is used to prevent the user from making any changes to the data.

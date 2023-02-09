@@ -5,8 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import {finalize, Observable} from 'rxjs';
-import {BusyService} from "../busy.service";
+import { finalize, Observable } from 'rxjs';
+import { BusyService } from "../services/busy.service";
 
 @Injectable()
 export class BusyHttpInterceptor implements HttpInterceptor {

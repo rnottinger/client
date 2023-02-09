@@ -4,20 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
-import { ConfigService } from "./core/services/config.service";
 
-import { httpInterceptorProviders } from "./core/services/interceptors";
+import { httpInterceptorProviders } from "./core/interceptors";
 import { CoreModule } from "./core/core.module";
 import { AUTHENTICATION_CONFIG, SharedModule } from "./shared/shared.module";
 
-import { AuthenticationModule } from "../../projects/authentication/src/lib/authentication.module";
 import { AppRoutingModule } from "./app-routing.module";
 
-// import {LoggerService} from "./core/services/logger.service";
-// import {PlainLoggerService} from "./core/services/plain-logger.service";
-// import {DataService} from "./core/services/data.service";
-// import {dataServiceFactory} from "./core/services/data.service.factory";
-// import {CentralizedErrorHandlerService} from "./core/services/centralized-error-handler.service";
+import { AuthenticationModule } from "../../projects/authentication/src/lib/authentication.module";
+import { ConfigService } from "../../projects/authentication/src/lib/config.service";
 
 export const configFactory = (configService: ConfigService) => {
     return () => configService.loadConfig();
