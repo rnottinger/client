@@ -1,6 +1,7 @@
 {
   "name": "authentication",
   "version": "0.0.1",
+  "author": "Richard Ottinger",
   "peerDependencies": {
     "@angular/common": "^15.1.0",
     "@angular/core": "^15.1.0"
