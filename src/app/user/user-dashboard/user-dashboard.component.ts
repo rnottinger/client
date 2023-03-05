@@ -7,9 +7,8 @@ import { Router } from "@angular/router";
 import { LoggerService } from "../../core/services/logger.service";
 import { DataService } from "../../core/services/data.service";
 import { NotificationService } from "../../core/services/notification.service";
-
-import { IBook } from "../../shared/models/book";
-import { IReader } from "../../shared/models/reader";
+import { IBook } from "../../core/models/book";
+import { IReader } from "../../core/models/reader";
 
 @Component({
   selector: 'abc-user-dashboard',
@@ -18,24 +17,22 @@ import { IReader } from "../../shared/models/reader";
 })
 export class UserDashboardComponent implements OnInit {
 
-  user: User = {
-    id: 0,
-    first_name: '',
-    last_name: '',
-    password: '',
-    token: '',
-    email: '',
-    created_at: '',
-    updated_at: ''
-  };
+  user: User | undefined;
 
+  // user: User = {
+  //   id: 0,
+  //   first_name: '',
+  //   last_name: '',
+  //   password: '',
+  //   token: '',
+  //   email: '',
+  //   created_at: '',
+  //   updated_at: ''
+  // };
 
   allBooks: IBook[] | undefined;
   allReaders: IReader[] | undefined;
   mostPopularBook: IBook | undefined;
-
-
-
 
   constructor(
       private http: HttpClient,

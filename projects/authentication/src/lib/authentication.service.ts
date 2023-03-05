@@ -4,8 +4,10 @@ import { tap } from "rxjs/operators";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 
-import { ConfigService } from "./config.service";
-import { LibraryConfig } from "./models/config";
+import { User } from "./models/user.model";
+import { Credentials } from "./models/credentials";
+import { ConfigService } from "../../../../src/app/core/services/config.service";
+import { LibraryConfig } from "../../../../src/app/core/models/config";
 // import {debug, RxJsLoggingLevel} from "./common/debug";
 
 @Injectable({
@@ -28,10 +30,24 @@ export class AuthenticationService {
     this.router.navigate(["/login"]);
   }
 
-  login(user: any): Observable<any> {
+  /**
+   * We are pass in the credentials that the user used on the login form
+   *   and we are going to make a request to the backend
+   *     and we will fetch the user profile
+   *       from the backend
+   * and we want to take this user profile state
+   *   that we are getting back from the server
+   *   and we want to save it in the store
+   *     because our application might need the user profile later on
+   *       in order to avoid having to fetch it again from the server
+   *         each time that we need it
+   * @param credentials
+   */
+  login(credentials: Credentials): Observable<User> {
+
     const data = {
-      username: user.email,
-      password: user.password,
+      username: credentials.email,
+      password: credentials.password,
       grant_type: 'password',
       client_id: this.configService.config.client_id,
       client_secret: this.configService.config.client_secret,
@@ -39,11 +55,14 @@ export class AuthenticationService {
     };
 
     const apiUrl = this.configService.config.apiUrl + this.authSettings.authEndpoint;
-    return this.http.post<any>(apiUrl, data)
+
+    return this.http.post<User>(apiUrl, data)
         .pipe(
             // debug( RxJsLoggingLevel.INFO, "user-begin: "),
             tap((result) => {
+
               localStorage.setItem("token", JSON.stringify(result.access_token));
+
             }),
             // debug( RxJsLoggingLevel.INFO, "user-end: ")
         );

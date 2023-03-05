@@ -1,5 +1,6 @@
-import {IReader} from "./models/reader";
-import {IBook} from "./models/book";
+import { IReader } from "../core/models/reader";
+import { IBook } from "../core/models/book";
+
 
 /**
  * This file contains some hard-coded data for the app
