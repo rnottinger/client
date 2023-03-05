@@ -4,6 +4,25 @@
     margin: 100px 0px;
 }
 
+
+
+.login-page {
+  max-width: 350px;
+  margin: 50px auto 0 auto;
+  padding: 10px;
+}
+
+mat-card-title {
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+
 /*
 .mat-form-field {
     width: 100%;
@@ -15,6 +34,8 @@ mat-card-content {
     display: flex;
     justify-content: center;
 }
+
+
 */
 
 .error {

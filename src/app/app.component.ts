@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfigService } from "../../projects/authentication/src/lib/config.service";
+import { ConfigService } from "./core/services/config.service";
 
 
 @Component({

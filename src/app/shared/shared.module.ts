@@ -7,10 +7,6 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatButtonModule } from "@angular/material/button";
 
-export const AUTHENTICATION_CONFIG = {
-    authEndpoint: '/oauth/token',
-    initialPage: "user"
-};
 
 /**
  * This SharedModule is used

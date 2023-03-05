@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { allBooks, allReaders } from "../../shared/data";
-import { IBook } from "../../shared/models/book";
-import { IReader} from "../../shared/models/reader";
 import { LoggerService } from "./logger.service";
+import { IBook } from "../models/book";
+import { IReader } from "../models/reader";
 
 
 /**

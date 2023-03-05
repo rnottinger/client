@@ -3,8 +3,12 @@ export interface User {
     first_name: string;
     last_name: string;
     email: string;
-    password?: string;
-    token?: string;
-    created_at: string;
-    updated_at: string;
+    access_token: string;
+
+    // first_name: string;
+    // last_name: string;
+    // password?: string;
+    // token?: string;
+    // created_at: string;
+    // updated_at: string;
 }

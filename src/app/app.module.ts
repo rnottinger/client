@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { APP_INITIALIZER, NgModule, isDevMode } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -7,12 +7,26 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 import { httpInterceptorProviders } from "./core/interceptors";
 import { CoreModule } from "./core/core.module";
-import { AUTHENTICATION_CONFIG, SharedModule } from "./shared/shared.module";
+import { SharedModule } from "./shared/shared.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 
 import { AuthenticationModule } from "../../projects/authentication/src/lib/authentication.module";
-import { ConfigService } from "../../projects/authentication/src/lib/config.service";
+import { ConfigService } from "./core/services/config.service";
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
+/**
+ * Configure
+ *   - the login api endpoint
+ *   - and the first page the user is taken to after they login
+ *       which is the user route
+ */
+export const AUTHENTICATION_CONFIG = {
+  authEndpoint: '/oauth/token',
+  initialPage: "user" // by route
+};
 
 export const configFactory = (configService: ConfigService) => {
     return () => configService.loadConfig();
@@ -25,12 +39,25 @@ export const configFactory = (configService: ConfigService) => {
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule,
         AuthenticationModule.forRoot(AUTHENTICATION_CONFIG),
-
+        AppRoutingModule,
         HttpClientModule,
         CoreModule,
-        SharedModule, // eventually we will import this in feature modules instead of here
+        SharedModule,
+
+        StoreModule.forRoot(
+          reducers,
+          {
+            metaReducers
+          }
+        ),
+        StoreDevtoolsModule.instrument(
+          {
+            maxAge: 25,
+            logOnly: !isDevMode()
+          }
+        ),
+      // eventually we will import this in feature modules instead of here
     ],
     exports: [
         AppRoutingModule,

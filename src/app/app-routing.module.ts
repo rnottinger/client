@@ -9,28 +9,15 @@ import { RoleGuard } from "../../projects/authentication/src/lib/guards/role.gua
 // If the user requests a route that is not found
 import { NotFoundComponent } from "./shared/not-found/not-found.component";
 
-// Import the public components from the authentication library
-import { PublicComponent } from "../../projects/authentication/src/lib/components/public/public.component";
-import { HomeComponent } from "../../projects/authentication/src/lib/components/public/home/home.component";
-import { LoginComponent } from "../../projects/authentication/src/lib/components/public/login/login.component";
-import { RegisterComponent } from "../../projects/authentication/src/lib/components/public/register/register.component";
-
 // We are now using dynamic imports in routes for lazy loaded feature modules
 
 import { ROLE } from './shared/role.enum';
+import { HomeComponent } from "./core/home/home.component";
 
 const routes: Routes = [
-  {
-    // Guest routes
-    path: '',
-    component: PublicComponent,
-    children: [
-      {path: 'home', component: HomeComponent},
-      {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent},
-      {path: '',   redirectTo: 'home', pathMatch: 'full'}, // redirect to `first-component`
-    ]
-  },
+
+  {path: 'home', component: HomeComponent},
+
   // Lazy Load these secure routes else redirect to /login
   {
     path: 'admin',
@@ -44,6 +31,7 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard, RoleGuard],
     data: {expectedRole: ROLE.USER}
   },
+  {path: '',   redirectTo: 'home', pathMatch: 'full'}, // redirect to `first-component`
 
   // EXAMPLE: the editreader route takes a :id parameter so that the related component can load the correct reader
   // {path: 'editReader/:id', component: EditReaderComponent, canActivate: [AuthenticationGuard, RoleGuard], data: {expectedRole: ROLE.ADMIN}},

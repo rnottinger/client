@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {SessionStorage} from "../../shared/models/session-storage";
+import { SessionStorage } from "../models/session-storage";
 
 @Injectable({
   providedIn: 'root'

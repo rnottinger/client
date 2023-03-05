@@ -14,6 +14,7 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatIconModule } from "@angular/material/icon";
 import { MatListModule } from "@angular/material/list";
 import { EnsureModuleLoadedOnceGuard } from "../ensure-module-loaded-once.guard";
+import { HomeComponent } from "./home/home.component";
 
 
 /**
@@ -27,7 +28,8 @@ import { EnsureModuleLoadedOnceGuard } from "../ensure-module-loaded-once.guard"
   declarations: [
     NavBarComponent,
     AccountMenuComponent,
-    LayoutComponent
+    LayoutComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
