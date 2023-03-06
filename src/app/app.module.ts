@@ -16,6 +16,10 @@ import { ConfigService } from "./core/services/config.service";
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EntityDataModule } from '@ngrx/data';
+import { entityConfig } from './entity-metadata';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 /**
  * Configure
@@ -57,6 +61,9 @@ export const configFactory = (configService: ConfigService) => {
             logOnly: !isDevMode()
           }
         ),
+        EntityDataModule.forRoot(entityConfig),
+        EffectsModule.forRoot([]),
+        StoreRouterConnectingModule.forRoot(),
       // eventually we will import this in feature modules instead of here
     ],
     exports: [
